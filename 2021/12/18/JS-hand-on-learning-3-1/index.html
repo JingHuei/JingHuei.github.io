@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JavaScript實作練習 part.3-1 | 鹿熙滴慧櫃 LucyDiHueiGreat</title><meta name="keywords" content="JavaScript實作練習"><meta name="author" content="Lucy"><meta name="copyright" content="Lucy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="來到第三個小練習，今天來做一個電子鐘！一樣，因為我參考的網站沒有做版面美化，這次的練習也會順便加上一點 CSS 讓版面好看一點～ 但篇幅好像有點長，我會把 JS 做出顯示時間的部分和加上 CSS 美化版面的部分拆分成兩個篇幅，本篇先講述怎麼用 JS 讓時間顯示出來喔！ 先來看個完成後的樣子  前面兩個小練習沒有 Follow 到的話可以點這裡 ↓JavaScript實作練習 part.1JavaS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript實作練習 part.3-1">
+<meta property="og:url" content="http://jinghuei.github.io/2021/12/18/JS-hand-on-learning-3-1/index.html">
+<meta property="og:site_name" content="鹿熙滴慧櫃 LucyDiHueiGreat">
+<meta property="og:description" content="來到第三個小練習，今天來做一個電子鐘！一樣，因為我參考的網站沒有做版面美化，這次的練習也會順便加上一點 CSS 讓版面好看一點～ 但篇幅好像有點長，我會把 JS 做出顯示時間的部分和加上 CSS 美化版面的部分拆分成兩個篇幅，本篇先講述怎麼用 JS 讓時間顯示出來喔！ 先來看個完成後的樣子  前面兩個小練習沒有 Follow 到的話可以點這裡 ↓JavaScript實作練習 part.1JavaS">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-12-18T10:34:41.000Z">
+<meta property="article:modified_time" content="2021-12-18T15:19:34.434Z">
+<meta property="article:author" content="Lucy">
+<meta property="article:tag" content="JavaScript實作練習">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="https://i.imgur.com/qZJZQ0p.png"><link rel="canonical" href="http://jinghuei.github.io/2021/12/18/JS-hand-on-learning-3-1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-33FJG0GDLD"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-33FJG0GDLD');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查詢的內容：${query} 呦！"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JavaScript實作練習 part.3-1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-18 23:19:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.imgur.com/Rnq7EHH.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">標籤</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 所有文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">鹿熙滴慧櫃 LucyDiHueiGreat</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 所有文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JavaScript實作練習 part.3-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2021-12-18T10:34:41.000Z" title="發表於 2021-12-18 18:34:41">2021-12-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2021-12-18T15:19:34.434Z" title="更新於 2021-12-18 23:19:34">2021-12-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AF%A6%E4%BD%9C%E7%B7%B4%E7%BF%92/">實作練習</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JavaScript實作練習 part.3-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="來到第三個小練習，今天來做一個電子鐘！"><a href="#來到第三個小練習，今天來做一個電子鐘！" class="headerlink" title="來到第三個小練習，今天來做一個電子鐘！"></a>來到第三個小練習，今天來做一個電子鐘！</h2><p>一樣，因為我參考的網站沒有做版面美化，這次的練習也會順便加上一點 CSS 讓版面好看一點～</p>
+<p>但篇幅好像有點長，我會把 JS 做出顯示時間的部分和加上 CSS 美化版面的部分拆分成兩個篇幅，本篇先講述怎麼用 JS 讓時間顯示出來喔！</p>
+<h2 id="先來看個完成後的樣子"><a href="#先來看個完成後的樣子" class="headerlink" title="先來看個完成後的樣子"></a>先來看個完成後的樣子</h2><p><img src= "https://c.tenor.com/sz-XG3TLQx8AAAAC/bugcat-capoo.gif" data-lazy-src="https://miro.medium.com/max/404/1*AX08_mAwQib-0lHP6jPjkA.png" alt="電子鐘完成版"></p>
+<blockquote>
+<p>前面兩個小練習沒有 Follow 到的話可以點這裡 ↓<br><a href="https://jinghuei.github.io/2021/12/15/JS-hand-on-learning-1/">JavaScript實作練習 part.1</a><br><a href="https://jinghuei.github.io/2021/12/18/JS-hand-on-learning-2/">JavaScript實作練習 part.2</a></p>
+</blockquote>
+<h2 id="開始練習吧！"><a href="#開始練習吧！" class="headerlink" title="開始練習吧！"></a>開始練習吧！</h2><h3 id="看一下原版的程式"><a href="#看一下原版的程式" class="headerlink" title="看一下原版的程式"></a>看一下原版的程式</h3><p><img src= "https://c.tenor.com/sz-XG3TLQx8AAAAC/bugcat-capoo.gif" data-lazy-src="https://miro.medium.com/max/875/1*W11grzaJK2bq7anWH2Lr-A.png" alt="原版的程式和demo畫面"></p>
+<p>也是按照邏輯再依照自己的喜愛微調，先寫好 HTML 的部分，把 Javascript 的程式碼搬到 JS 的欄位～</p>
+<h3 id="來看-HTML-的部分"><a href="#來看-HTML-的部分" class="headerlink" title="來看 HTML 的部分"></a>來看 HTML 的部分</h3><p><img src= "https://c.tenor.com/sz-XG3TLQx8AAAAC/bugcat-capoo.gif" data-lazy-src="https://miro.medium.com/max/610/1*IVyu8PCfkP3Sb5K10gXQZQ.png" alt="來看 HTML 的部分"></p>
+<p>因為要呼叫 JS 函式，所以要在 <code>&lt;body&gt;</code> 裡面加上 <code>onload=”ShowDate()”</code>。</p>
+<p>供 JS 回傳時間的格子用 4 個 <code>&lt;p&gt;</code> 來放，原本的網站用 4 個 ID ，名稱依序是 showbox1 ~ showbox4 ，不過因為我之前在 AC 學習的時候，教學預設都用 class 來為 CSS 命名，我在練習這個的時候就覺得，為什麼要用 ID 命名不能用 class ？就擅自把命名方式改成 class 。</p>
+<h3 id="接著看-JS-的部分"><a href="#接著看-JS-的部分" class="headerlink" title="接著看 JS 的部分"></a>接著看 JS 的部分</h3><p><img src= "https://c.tenor.com/sz-XG3TLQx8AAAAC/bugcat-capoo.gif" data-lazy-src="https://miro.medium.com/max/853/1*490dc9ER9aIu3Z6HCrJOPQ.png" alt="接著看 JS 的部分"></p>
+<p>因為前面把命名方式改成 class 了，所以這裡把原本的 <code>getElementById()</code> 改成 <code>getElementsByClassName()</code> ，到這裡我還沾沾自喜自己很聰明～</p>
+<p>打完一長串之後，才發現悲劇來了，我的 showbox 什麼都沒顯示出來，說好的顯示時間呢？</p>
+<p><img src= "https://c.tenor.com/sz-XG3TLQx8AAAAC/bugcat-capoo.gif" data-lazy-src="https://miro.medium.com/max/875/1*mOLE4EdZ9h3N8R8qwJC51g.png" alt="悲劇的完整程式畫面"></p>
+<p><strong>說好的時間一個都沒顯示出來．．．</strong></p>
+<p>於是我開始找出錯的原因，先嘗試把命名方式改回 ID 命名，JS 的部分也要改回 <code>getElementById</code>。</p>
+<p><img src= "https://c.tenor.com/sz-XG3TLQx8AAAAC/bugcat-capoo.gif" data-lazy-src="https://miro.medium.com/max/875/1*Y3xR75tMo3kuhxif3UVsAA.png" alt="改回 ID 命名的完整程式畫面"></p>
+<p><strong>出現了！</strong></p>
+<p>由此可知，真的是我把命名方式改成 class 的關係！</p>
+<p>但一樣是命名，到底為什麼不能用 class ？！</p>
+<p>Google 一下才知道，原來在 HTML 中，一個物件的 ID 在整個文件中是獨一無二的，class 則與其相反，class 在一個文件中可以有很多個，很常被拿來重複使用，所以當我用 <code>document.getElementsByClassName</code> 來選取 class 物件時，就會回傳很多個含有指定 class 的物件回去給 JS ，雖然我的 class 都只有套用在一個 <code>&lt;p&gt;</code> 上面，但好像也一樣會讓 JS 不知道要抓哪個值。</p>
+<p>看完這個我才想到，對ㄟ！<strong>class 可以有很多個，但 ID 只能有一個！</strong></p>
+<p>原來是這樣才不能用 class 來選取物件（筆記）。</p>
+<p>順利的修正程式並顯示出時間之後，就完成．．．</p>
+<p>還 沒 有 ！</p>
+<h2 id="總覺得還有哪裡怪怪的？"><a href="#總覺得還有哪裡怪怪的？" class="headerlink" title="總覺得還有哪裡怪怪的？"></a>總覺得還有哪裡怪怪的？</h2><p>（寫這篇文的時候）今天明明是 10 月 26 日（對照我的電腦時鐘），為什麼顯示的時間卻少一個月？</p>
+<p><img src= "https://c.tenor.com/sz-XG3TLQx8AAAAC/bugcat-capoo.gif" data-lazy-src="https://miro.medium.com/max/476/1*iM-BjRiQmcozyit97C9kAA.png" alt="少一個月的電子鐘"></p>
+<p>我明明照著網站寫，非常疑惑的回去看參考的網站，結果發現網站寫的原本就少一個月．．．（昏倒）</p>
+<p><strong>但我不能讓我的時鐘少一個月啊！</strong></p>
+<p>一樣再去 Google，得知原來 <strong><code>getMonth()</code>是從 0 開始計算</strong>，所以才會少一個月，如果要顯示正確的月份，必須要 ＋1 才行。</p>
+<p>喔～ 又學到了～</p>
+<p>修正之後終於有一個正常的電子鐘！</p>
+<blockquote>
+<p>參考網站：<br><a target="_blank" rel="noopener" href="http://javascript.klab.tw/example/ex4">Javascript教學網站 - 函數呼叫範例</a><br><a target="_blank" rel="noopener" href="https://zwh.zone/javascript-getelementsbyclassname--e5-8f-96-e5-be-97-e5-b0-8d-e6-87-89-e7-9a-84-class--e7-89-a9-e4-bb-b6-e9-80-b2-e8-a1-8c-e6-93-8d-e4-bd-9c/">取得對應的 Class 物件進行操作</a><br><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10225167">EP.21 RE：從零開始的學習 JS 生活-第二十一日</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lucy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="http://jinghuei.github.io/2021/12/18/JS-hand-on-learning-3-1/">http://jinghuei.github.io/2021/12/18/JS-hand-on-learning-3-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="http://JingHuei.github.io" target="_blank">鹿熙滴慧櫃 LucyDiHueiGreat</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript%E5%AF%A6%E4%BD%9C%E7%B7%B4%E7%BF%92/">JavaScript實作練習</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/18/Use-HTML-CSS-draw-piecharts/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">用純 HTML + CSS 畫出圓餅圖</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/18/JS-hand-on-learning-2/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaScript實作練習 part.2</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2021/12/15/JS-hand-on-learning-1/" title="JavaScript實作練習 part.1"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-15</div><div class="title">JavaScript實作練習 part.1</div></div></a></div><div><a href="/2021/12/18/JS-hand-on-learning-2/" title="JavaScript實作練習 part.2"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-18</div><div class="title">JavaScript實作練習 part.2</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.imgur.com/Rnq7EHH.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lucy</div><div class="author-info__description">分享/紀錄生活大小事、學習歷程/筆記、各種碎念。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">標籤</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://liker.land/hyoeun86015/civic"><i class="fas fa-thumbs-up"></i><span>給我一點鼓勵</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/JingHuei" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:hyoeun86015@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">部落格還在架設中，完整內容請再稍等～</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%86%E5%88%B0%E7%AC%AC%E4%B8%89%E5%80%8B%E5%B0%8F%E7%B7%B4%E7%BF%92%EF%BC%8C%E4%BB%8A%E5%A4%A9%E4%BE%86%E5%81%9A%E4%B8%80%E5%80%8B%E9%9B%BB%E5%AD%90%E9%90%98%EF%BC%81"><span class="toc-number">1.</span> <span class="toc-text">來到第三個小練習，今天來做一個電子鐘！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E4%BE%86%E7%9C%8B%E5%80%8B%E5%AE%8C%E6%88%90%E5%BE%8C%E7%9A%84%E6%A8%A3%E5%AD%90"><span class="toc-number">2.</span> <span class="toc-text">先來看個完成後的樣子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%8B%E5%A7%8B%E7%B7%B4%E7%BF%92%E5%90%A7%EF%BC%81"><span class="toc-number">3.</span> <span class="toc-text">開始練習吧！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E4%B8%80%E4%B8%8B%E5%8E%9F%E7%89%88%E7%9A%84%E7%A8%8B%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">看一下原版的程式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%86%E7%9C%8B-HTML-%E7%9A%84%E9%83%A8%E5%88%86"><span class="toc-number">3.2.</span> <span class="toc-text">來看 HTML 的部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E8%91%97%E7%9C%8B-JS-%E7%9A%84%E9%83%A8%E5%88%86"><span class="toc-number">3.3.</span> <span class="toc-text">接著看 JS 的部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B8%BD%E8%A6%BA%E5%BE%97%E9%82%84%E6%9C%89%E5%93%AA%E8%A3%A1%E6%80%AA%E6%80%AA%E7%9A%84%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">總覺得還有哪裡怪怪的？</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 By Lucy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頁首"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜尋</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

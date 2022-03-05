@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>［六角學院 密室逃脫心得］第一關 — 初來乍到，GitHub 真香</title>
+      <link href="/2022/03/06/hexschoolRPG-1/"/>
+      <url>/2022/03/06/hexschoolRPG-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h2><p>練習和讀了很久的 HTML/CSS/JS 各種形式的教學</p><p>因為在職場上不可能完全只接觸到這些</p><p>總有些更重要的很難自己練習或光靠讀教學就能學會</p><p>去年雙十一鐵下心買了六角學院的網頁設計組合包(到現在還沒看完 XD)</p><p>這次又被「專為前端量身打造的線上遊戲版密室逃脫」吸引到</p><p>標題「你要留下 還是塊陶？」以遊戲的方式帶入真實前端設計師在職場會面臨到的各種情境</p><p>邊遊戲邊引導和教學 感覺跳脫一直看影片的學習方式 對我來說很有趣</p><p>看到用 Line 傳訊息的部分 覺得更入戲 就下定決心報名了！</p><h2 id="終於等到開課啦"><a href="#終於等到開課啦" class="headerlink" title="終於等到開課啦"></a>終於等到開課啦</h2><p>趁著剛開始沒多久先記錄一下心得</p><p>密室逃脫第一關 — 初來乍到，GitHub 真香</p><p>名副其實要帶領我們學習 GitHub </p><p>對於我來說… 真是第一關就直接打到痛點</p><p><strong>我超級不會 GitHub</strong></p><p>真的就像是剛進到新公司的前端菜鳥 硬著頭皮去詢問操作方式(抖</p><p>好在有詳細的教學 帶領我一步一步操作</p><p>不熟悉的慢慢跟著教學操作 然後終於完成 開心的交出我的作業！</p><p>結果隔天回平台看 我的作業居然審核沒通過 哪尼？！ Σ(ﾟДﾟ；≡；ﾟдﾟ)</p><p>原來是我搞錯要 fork 的專案…</p><p>只好又再重作了一次 希望能順利過關 </p><h2 id="這關獲得的知識"><a href="#這關獲得的知識" class="headerlink" title="這關獲得的知識"></a>這關獲得的知識</h2><blockquote><p><strong>GitHub 的操作方法</strong> 及 <strong>PR 是什麼、怎麼發</strong></p></blockquote><p>其實在這之前我自己已經使用 GitHub 一陣子了</p><p>但我都是憑直覺亂按 只要 page 有成功推上去可以瀏覽就覺得有成功了</p><p>根本不懂其他的操作 更不懂指令到底要輸入在哪裡、要輸入什麼</p><p>一切都是歪打正著 (<em>´艸`</em>)</p><p>在這個任務跟著教學學到了怎麼發 PR 以及 PR 到底是什麼</p><p>雖然操作到現在還是沒有非常熟悉</p><p>但至少還是比原本的程度更進步了一些呀～ ヽ(●´∀`●)ﾉ</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 學習心得 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 密室逃脫 </tag>
+            
+            <tag> 六角學院 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript實作練習 part.3-2</title>
       <link href="/2022/01/09/JS-hand-on-learning-3-2/"/>
       <url>/2022/01/09/JS-hand-on-learning-3-2/</url>
